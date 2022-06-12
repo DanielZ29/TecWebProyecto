@@ -39,6 +39,18 @@
         <input type="tel" class="form-control" value="<?php echo $perfil['boleta']?>" id="boleta" name="boleta">
     </div>
 
+    <p>Selecciona una opción</p>
+    <select class="form-select" name="representante" aria-label="Default select example">
+        <option value="0">Alumno</option>
+        <option value="1">Alumno Representante</option>
+    </select>
+    <br>
+
+    <div class="mb-3">
+        <label for="password class="form-label">Contraseña</label>
+        <input type="password" class="form-control" value="<?php echo $perfil['password']?>" id="password" name="password">
+    </div>
+
     <button type="submit" name="submit" class="btn btn-success">Actualizar Cambios</button>
 </form>
 <br>

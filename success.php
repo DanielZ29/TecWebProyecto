@@ -10,8 +10,10 @@
             $email = $_POST['email'];
             $tel = $_POST['tel'];
             $bol = $_POST['boleta'];
+            $represenante = $_POST['representante'];
+            $password = $_POST['password'];
 
-            $isSuccess = $crud->insertInfo($nom,$email,$tel,$bol);
+            $isSuccess = $crud->insertInfo($nom,$email,$tel,$bol,$represenante,$password);
 
             if($isSuccess){
                 echo '<h1 class="text-center text-success">Has sido registrado</h1>';
@@ -36,6 +38,7 @@
             <p class="card-text">
                 Telefono: <?php echo $_POST['tel'];  ?>
             </p>
+            
             <p class="card-text">
                 Boleta: <?php echo $_POST['boleta'];  ?>
     

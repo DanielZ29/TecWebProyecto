@@ -8,10 +8,10 @@
             $this->db = $conn;
         }
 
-        public function insertInfo($nom,$email,$tel,$bol){
+        public function insertInfo($nom,$email,$tel,$bol,$representante,$password){
             try{
                 //statement de sql para ser ejecutado
-                $sql = "INSERT INTO tt (nombre,email,telefono,boleta)VALUES (:nom, :email, :tel, :bol)";
+                $sql = "INSERT INTO tt (nombre,email,telefono,boleta,representante,password) VALUES (:nom, :email, :tel, :bol,:representante, :password)";
                 $stmt = $this->db->prepare($sql);
 
                 //llenamos con valores verdaderos
@@ -19,6 +19,8 @@
                 $stmt->bindparam(':email',$email);
                 $stmt->bindparam(':tel',$tel);
                 $stmt->bindparam(':bol',$bol);
+                $stmt->bindparam(':representante',$representante);
+                $stmt->bindparam(':password',$password);
 
                 //ejecutamos
                 $stmt->execute();
@@ -31,9 +33,9 @@
                 }
         }
 
-        public function editInfo($id,$nom,$email,$tel,$bol){
+        public function editInfo($id,$nom,$email,$tel,$bol,$representante,$password){
             try{
-                $sql = "UPDATE `tt` SET `nombre`=:nom,`email`=:email,`telefono`=:tel,`boleta`=:bol WHERE TT_id = :id ";
+                $sql = "UPDATE `tt` SET `nombre`=:nom,`email`=:email,`telefono`=:tel,`boleta`=:bol,`representante`=:representante,`password`=:password  WHERE TT_id = :id ";
                 $stmt = $this->db->prepare($sql);
 
                 //llenamos con valores verdaderos
@@ -42,6 +44,8 @@
                 $stmt->bindparam(':email',$email);
                 $stmt->bindparam(':tel',$tel);
                 $stmt->bindparam(':bol',$bol);
+                $stmt->bindparam(':representante',$representante);
+                $stmt->bindparam(':password',$password);
 
                 //ejecutamos
                 $stmt->execute();

@@ -9,9 +9,11 @@ if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $tel = $_POST['tel'];
     $bol = $_POST['boleta'];
+    $representante = $_POST['representante'];
+    $password = $_POST['password'];
 
 
-    $result = $crud->editInfo($id,$nom,$email,$tel,$bol);
+    $result = $crud->editInfo($id,$nom,$email,$tel,$bol,$representante,$password);
 
     if($result){
         header("Location: viewrecords.php");

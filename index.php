@@ -35,6 +35,18 @@
         <input type="tel" class="form-control" id="boleta" name="boleta">
     </div>
 
+    <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" id="password" name="password">
+    </div>
+    <p>Selecciona una opción</p>
+    <select class="form-select" name="representante" aria-label="Default select example">
+        <option value="0">Alumno</option>
+        <option value="1">Alumno Representante</option>
+    </select>
+    <br>
+
+
     <button type="submit" name="submit" class="btn btn-primary">Entrar</button>
 </form>
 <br>

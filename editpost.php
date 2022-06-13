@@ -4,16 +4,16 @@
 
 if(isset($_POST['submit'])){
     //extraemos los valores 
-    $id = $_POST['id'];
+    $id_alumno = $_POST['id_alumno'];
     $nom = $_POST['nombre'];
     $email = $_POST['email'];
-    $tel = $_POST['tel'];
-    $bol = $_POST['boleta'];
+    $telefono = $_POST['telefono'];
+    $boleta = $_POST['boleta'];
     $representante = $_POST['representante'];
     $password = $_POST['password'];
 
 
-    $result = $crud->editInfo($id,$nom,$email,$tel,$bol,$representante,$password);
+    $result = $crud->editInfo($id_alumno,$nom,$email,$telefono,$boleta,$representante,$password);
 
     if($result){
         header("Location: viewrecords.php");

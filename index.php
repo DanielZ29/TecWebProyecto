@@ -3,56 +3,43 @@
         $title = 'Index';
         require_once 'includes/header.php';
         require_once 'db/conn.php'; 
+
+       
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $email = strtolower(trim($_POST['email']));
+        $password = $_POST['password'];
+      
+
+        $result = $user->getUser($email,$password);
+        if(!$result){
+            echo '<div class="alert alert-danger">Nombre de Usuario o Contraseña Incorrecto. Intenta de nuevo</div>';
+        }else{
+            $_SESSION['email'] = $email;
+            $_SESSION['userid'] = $result['id'];
+            header("Location: viewrecords.php");
+        }
+
+    }
     ?>
 
-<!--
-    Nombre
-    Correo
-    Telefono
-    Boleta
-    -->
+<h1 class="text-center"><?php echo $title ?> </h1>
+   
+    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="post">
+        <table class="table table-sm">
+            <tr>
+                <td><label for="email">Username: * </label></td>
+                <td><input type="text" name="email" class="form-control" id="email" value="<?php if($_SERVER['REQUEST_METHOD'] == 'POST') echo $_POST['email']; ?>">
+                </td>
+            </tr>
+            <tr>
+                <td><label for="password">Password: * </label></td>
+                <td><input type="password" name="password" class="form-control" id="password">
+                </td>
+            </tr>
+        </table><br/><br/>
+        <input type="submit" value="Login" class="btn btn-primary btn-block"><br/>
+        <a href="#"> Forgot Password </a>
+            
+    </form><br/><br/><br/><br/>
 
-<h1 class="text-center">login</h1>
-
-<form method="post" action="success.php">
-    <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" name="nombre">
-    </div>
-
-    <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
-    </div>
-
-    <div class="mb-3">
-        <label for="tel" class="form-label">Telefono</label>
-        <input type="tel" class="form-control" id="tel" name="tel">
-    </div>
-
-    <div class="mb-3">
-        <label for="boleta" class="form-label">Boleta</label>
-        <input type="tel" class="form-control" id="boleta" name="boleta">
-    </div>
-
-    <div class="mb-3">
-        <label for="password" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="password" name="password">
-    </div>
-    <p>Selecciona una opción</p>
-    <select class="form-select" name="representante" aria-label="Default select example">
-        <option value="0">Alumno</option>
-        <option value="1">Alumno Representante</option>
-    </select>
-    <br>
-
-
-    <button type="submit" name="submit" class="btn btn-primary">Entrar</button>
-</form>
-<br>
-<br>
-<br>
-
-
-
-<?php require_once 'includes/footer.php'; ?>
+<?php include_once 'includes/footer.php'?>

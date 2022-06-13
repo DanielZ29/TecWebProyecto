@@ -17,6 +17,8 @@
         throw new PDOException($e->getMessage());
     }
 
-    require_once 'crud.php';
-    $crud = new crud($pdo);
+    require_once 'alumnos.php';
+    require_once 'profesores.php';
+    $alumnos = new alumnos($pdo);
+    $profesores = new profesores($pdo);
 ?>    

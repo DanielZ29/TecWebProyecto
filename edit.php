@@ -18,7 +18,7 @@
 <h1 class="text-center">Editar</h1>
 
 <form method="post" action="editpost.php">
-    <input type="hidden" name="id" value="<?php echo $perfil['TT_id']?>" />
+    <input type="hidden" name="id" value="<?php echo $perfil['id_alumno']?>" />
     <div class="mb-3">
         <label for="nombre" class="form-label">Nombre</label>
         <input type="text" class="form-control" value="<?php echo $perfil['nombre']?>" id="nombre" name="nombre">

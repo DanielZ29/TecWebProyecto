@@ -15,7 +15,7 @@
         if(!$result){
             echo '<div class="alert alert-danger">Usuario o Contraseña Incorreto. Intenta de nuevo </div>';
         }else{
-            $_SESSION['email'] = $email;
+            $_SESSION['username'] = $email;
             $_SESSION['userid'] = $result['id'];
             header("Location: viewrecords.php");
         }

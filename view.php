@@ -4,10 +4,10 @@
         require_once 'includes/header.php';
         require_once 'db/conn.php'; 
 
-        //obtener la id
+        //obtener la id_alumno
         if(isset($_GET['id'])){
-            $id = $_GET['id'];
-            $result = $crud->getInfoDet($id);
+            $id_alumno = $_GET['id'];
+            $result = $alumnos->getInfoDet($id_alumno);
         } else{
             echo "<h1 class='text-danger'>Por favor checa los detalles y vuelve de nuevo</h1>";
         }

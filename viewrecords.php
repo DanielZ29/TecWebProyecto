@@ -3,9 +3,10 @@
         $title = 'View Records';
         require_once 'includes/header.php';
         require_once 'db/conn.php'; 
-
+       
+        
         //obtener toda la info
-        $results = $crud->getInfo();
+        $results = $alumnos->getInfo();
     ?>
 
 

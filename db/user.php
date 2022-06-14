@@ -1,10 +1,10 @@
 <?php 
 
     class user{
-
+        // private database object\
         private $db;
         
-
+        //constructor to initialize private variable to the database connection
         function __construct($conn){
             $this->db = $conn;
         }
@@ -16,14 +16,15 @@
                     return false;
                 } else{
                     
-                    $sql = "INSERT INTO tt (email,password) VALUES (:email,:password)";
-
+                    // define sql statement to be executed
+                    $sql = "INSERT INTO alumno (email,password) VALUES (:email,:password)";
+                    //prepare the sql statement for execution
                     $stmt = $this->db->prepare($sql);
-      
+                    // bind all placeholders to the actual values
                     $stmt->bindparam(':email',$email);
                     $stmt->bindparam(':password',$password);
                     
-
+                    // execute statement
                     $stmt->execute();
                     return true;
                 }
@@ -37,7 +38,7 @@
 
         public function getUser($email,$password){
             try{
-                $sql = "select * from alumnos where email = :email AND password = :password ";
+                $sql = "select * from alumno where email = :email AND password = :password ";
                 $stmt = $this->db->prepare($sql);
                 $stmt->bindparam(':email', $email);
                 $stmt->bindparam(':password', $password);
@@ -52,7 +53,7 @@
 
         public function getUserbyUsername($email){
             try{
-                $sql = "select count(*) as num from tt where email = :email";
+                $sql = "select count(*) as num from alumno where email = :email";
                 $stmt = $this->db->prepare($sql);
                 $stmt->bindparam(':email',$email);
                 
@@ -67,7 +68,7 @@
 
         public function getUsers(){
             try{
-                $sql = "SELECT * FROM tt";
+                $sql = "SELECT * FROM alumno";
                 $result = $this->db->query($sql);
                 return $result;
             }catch(PDOException $e){

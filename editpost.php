@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
     $password = $_POST['password'];
 
 
-    $result = $crud->editInfo($id_alumno,$nom,$email,$telefono,$boleta,$representante,$password);
+    $result = $alumnos->editInfo($id_alumno,$nom,$email,$telefono,$boleta,$representante,$password);
 
     if($result){
         header("Location: viewrecords.php");

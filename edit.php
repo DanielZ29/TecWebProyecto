@@ -10,7 +10,7 @@
         }
         else{
             $id = $_GET['id'];
-            $perfil = $crud->getInfoDet($id);
+            $perfil = $alumnos->getInfoDet($id);
         
     ?>
 
@@ -38,7 +38,7 @@
         <label for="boleta" class="form-label">Boleta</label>
         <input type="tel" class="form-control" value="<?php echo $perfil['boleta']?>" id="boleta" name="boleta">
     </div>
-
+<!--
     <p>Selecciona una opción</p>
     <select class="form-select" name="representante" aria-label="Default select example">
         <option value="0">Alumno</option>
@@ -48,8 +48,9 @@
 
     <div class="mb-3">
         <label for="password class="form-label">Contraseña</label>
-        <input type="password" class="form-control" value="<?php echo $perfil['password']?>" id="password" name="password">
+        <input type="password" class="form-control" value="><1?php echo $perfil['password']?>" id="password" name="password">
     </div>
+-->
 
     <button type="submit" name="submit" class="btn btn-success">Actualizar Cambios</button>
 </form>

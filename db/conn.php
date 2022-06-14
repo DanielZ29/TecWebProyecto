@@ -19,6 +19,8 @@
 
     require_once 'alumnos.php';
     require_once 'profesores.php';
+    require_once 'user.php';
     $alumnos = new alumnos($pdo);
     $profesores = new profesores($pdo);
+    $user = new user($pdo);
 ?>    

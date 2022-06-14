@@ -5,7 +5,7 @@
         }else{
             $id = $_GET['id'];
 
-            $result = $crud->deleteInfo($id);
+            $result = $alumnos->deleteInfo($id);
             if($result)
             {
                 header("Location: viewrecords.php");

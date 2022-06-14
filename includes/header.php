@@ -1,4 +1,4 @@
-<?php include_once 'session.php'?>
+<?php include_once 'includes/session.php'?>
 
 <!doctype html>
 <html lang="en">
@@ -39,11 +39,11 @@
                     <?php 
               if(!isset($_SESSION['userid'])){
           ?>
-                    <a class="nav-item nav-link" href="login.php">Login <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="loginAlumno.php">Login <span class="sr-only">(current)</span></a>
                     <?php } else { ?>
-                    <a class="nav-item nav-link" href="#"><span>Hello <?php echo $_SESSION['username'] ?>! </span> <span
+                    <a class="nav-item nav-link" href="#"><span>Hello <?php echo $_SESSION['email'] ?>! </span> <span
                             class="sr-only">(current)</span></a>
-                    <a class="nav-item nav-link" href="logout.php">Logout <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="logoutAlumno.php">Logout <span class="sr-only">(current)</span></a>
                     <?php } ?>
                 </div>
             </div>

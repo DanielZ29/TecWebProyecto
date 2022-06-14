@@ -3,6 +3,7 @@
         $title = 'View Records';
         require_once 'includes/header.php';
         require_once 'db/conn.php'; 
+        require_once 'includes/auth_check.php';
 
         //obtener la id_alumno
         if(isset($_GET['id'])){

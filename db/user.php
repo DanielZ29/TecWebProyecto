@@ -51,6 +51,21 @@
             }
         }
 
+        public function getUserProfesor($email,$password){
+            try{
+                $sql = "select * from profesores where email = :email AND password = :password ";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':email', $email);
+                $stmt->bindparam(':password', $password);
+                $stmt->execute();
+                $result = $stmt->fetch();
+                return $result;
+           }catch (PDOException $e) {
+                echo $e->getMessage();
+                return false;
+            }
+        }
+
         public function getUserbyUsername($email){
             try{
                 $sql = "select count(*) as num from alumno where email = :email";

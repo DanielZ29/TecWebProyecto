@@ -39,11 +39,11 @@
                     <?php 
               if(!isset($_SESSION['username'])){
           ?>
-                    <a class="nav-item nav-link" href="loginAlumno.php">Login <span class="sr-only"></span></a>
+                    <a class="nav-item nav-link" href="index.php">Login <span class="sr-only"></span></a>
                     <?php } else { ?>
                     <a class="nav-item nav-link" href="#"><span>Hola <?php echo $_SESSION['username'] ?></span> <span
                             class="sr-only"></span></a>
-                    <a class="nav-item nav-link" href="logoutAlumno.php">Logout <span class="sr-only"></span></a>
+                    <a class="nav-item nav-link" href="logout.php">Logout <span class="sr-only"></span></a>
                     <?php } ?>
                 </div>
             </div>

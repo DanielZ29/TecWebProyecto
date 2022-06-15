@@ -1,7 +1,7 @@
 <?php 
     include_once 'session.php';
     require_once '../db/conn.php'; 
-    $results = $alumnos->getInfo($_SESSION['username']);
+    $results = $profesores->getInfo($_SESSION['username']);
 ?>
 
 <!doctype html>
@@ -36,7 +36,7 @@
                             <a class="nav-link" aria-current="page" href="../views/mainTT.php">Mis TT</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../views/editarCuenta.php?id=<?php echo $results['id_alumno'] ?>">Mi Cuenta</a>
+                            <a class="nav-link" href="../views/editarCuentaProfesor.php?id=<?php echo $results['id_profesor'] ?>">Mi Cuenta</a>
                         </li>
                     </ul>
                 </div>

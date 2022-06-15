@@ -26,9 +26,27 @@
             }
         }
 
+        public function getInformacionTTById($id_tt){
+            try{
+
+                $sql = "SELECT titulo, resumen, estado, id_tt FROM tt  WHERE id_tt = :id_tt;";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':id_tt', $id_tt);
+                $stmt->execute();
+                $result = $stmt->fetch();
+                return $result;
+
+            }catch(PDOException $e){
+
+                echo $e -> getMessage();
+                return false;
+                
+            }
+        }
+
         public function getMisTrabajosTerminales($id_profesor){
             try{
-                $sql = "SELECT tt.titulo, tt.resumen, alumno.nombre FROM tt INNER JOIN profesores_tt ON profesores_tt.id_tt = tt.id_tt INNER JOIN profesores ON profesores.id_profesor = profesores_tt.id_profesor INNER JOIN alumno ON alumno.id_tt = tt.id_tt WHERE profesores.id_profesor = :id_profesor AND alumno.representante = 1;";
+                $sql = "SELECT tt.titulo, tt.resumen, alumno.nombre, tt.id_tt FROM tt INNER JOIN profesores_tt ON profesores_tt.id_tt = tt.id_tt INNER JOIN profesores ON profesores.id_profesor = profesores_tt.id_profesor INNER JOIN alumno ON alumno.id_tt = tt.id_tt WHERE profesores.id_profesor = :id_profesor AND alumno.representante = 1;";
                 $stmt = $this->db->prepare($sql);
                 $stmt->bindparam(':id_profesor',$id_profesor);
                 $stmt->execute();
@@ -93,6 +111,23 @@
                 
             }
         }
+
+        public function getAlumnos($id_tt){
+            try{
+                $sql = "SELECT alumno.nombre FROM alumno INNER JOIN tt ON tt.id_tt = alumno.id_tt WHERE tt.id_tt = :id_tt;";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':id_tt',$id_tt);
+                $stmt->execute();
+                return $stmt;
+                
+            }catch(PDOException $e){
+
+                echo $e -> getMessage();
+                return false;
+                
+            }
+        }
+
 
         public function registrarCompañero($nombre, $emailIntegrante, $telefono, $boleta, $email){
 

@@ -48,18 +48,16 @@
         }
         
 
-        public function editInfo($id_alumno,$nombre,$email,$telefono,$boleta,$representante,$password){
+        public function editInfo($id_profesor,$nombre,$email,$telefono,$password){
             try{
-                $sql = "UPDATE `alumno` SET `nombre`=:nombre,`email`=:email,`telefono`=:telefono,`boleta`=:boleta,`representante`=:representante,`password`=:password  WHERE TT_id = :id_alumno ";
+                $sql = "UPDATE `profesores` SET `nombre`=:nombre,`email`=:email,`telefono`=:telefono,`password`=:password  WHERE id_profesor = :id_profesor ";
                 $stmt = $this->db->prepare($sql);
 
                 //llenamos con valores verdaderos
-                $stmt->bindparam(':id_alumno',$id_alumno);
+                $stmt->bindparam(':id_profesor',$id_profesor);
                 $stmt->bindparam(':nombre',$nombre);
                 $stmt->bindparam(':email',$email);
                 $stmt->bindparam(':telefono',$telefono);
-                $stmt->bindparam(':boleta',$boleta);
-                $stmt->bindparam(':representante',$representante);
                 $stmt->bindparam(':password',$password);
 
                 //ejecutamos
@@ -73,9 +71,12 @@
             
         }
 
-        public function getInfo(){
-            $sql = "SELECT * FROM `alumno`;";
-            $result = $this->db->query($sql);
+        public function getInfo($id_profesor){
+            $sql = "SELECT * FROM `profesores` WHERE email = :email_profesor;";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':email_profesor', $id_profesor);
+            $stmt->execute();
+            $result = $stmt->fetch();
             return $result;
         }
 
@@ -93,10 +94,10 @@
             }
         }
 
-        public function getInfoDet($id_alumno){
-            $sql = "select * from alumno where id_alumno = :id_alumno";
+        public function getInfoDet($id_profesor){
+            $sql = "select * from profesores where id_profesor = :id_profesor";
             $stmt = $this->db->prepare($sql);
-            $stmt->bindparam(':id_alumno', $id_alumno);
+            $stmt->bindparam(':id_profesor', $id_profesor);
             $stmt->execute();
             $result = $stmt->fetch();
             return $result;

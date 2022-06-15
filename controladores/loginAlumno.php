@@ -1,6 +1,6 @@
 <?php
     $title = 'Login Alumnos'; 
-
+    include_once '../includes/session.php';
     require_once '../includes/headerClean.php'; 
     require_once '../db/conn.php'; 
     

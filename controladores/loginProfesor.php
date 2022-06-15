@@ -1,6 +1,6 @@
 <?php
     $title = 'Login Profesor'; 
-
+    include_once '../includes/session.php';
     require_once '../includes/headerClean.php'; 
     require_once '../db/conn.php'; 
     
@@ -16,7 +16,7 @@
             echo '<div class="alert alert-danger">Usuario o Contraseña Incorreto. Intenta de nuevo </div>';
         }else{
             $_SESSION['username'] = $email;
-            $_SESSION['userid'] = $result['id'];
+            $_SESSION['userid'] = $result['id_profesor'];
             $_SESSION['name'] = $result['nombre'];
             header("Location: ../views/mainProfesor.php");
         }

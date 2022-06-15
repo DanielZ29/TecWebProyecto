@@ -1,0 +1,10 @@
+$('input:radio[name=flexRadioDefault]').change(function(){
+    if($(this).attr("value")=="alumno"){
+      $("#botonAlumno").show();
+      $("#botonProfesor").hide();
+    } 
+    if($(this).attr("value")=="profesor"){
+        $("#botonProfesor").show();
+        $("#botonAlumno").hide();
+    }
+});

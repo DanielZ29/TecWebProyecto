@@ -1,13 +1,13 @@
 <?php
 
         $title = 'View Records';
-        require_once 'includes/header.php';
+        require_once 'headerMain.php';
         require_once 'db/conn.php'; 
         require_once 'includes/auth_check.php';
        
         
         
-        $results = $alumnos->getInfo();
+        $results = $alumnos->getInfo($_SESSION['username']);
     ?>
 
 
@@ -19,17 +19,17 @@
                 <th>Boleta</th>
                 <th>Ver</th>
             </tr>
-            <?php while($r = $results->fetch(PDO::FETCH_ASSOC)){ ?>
+        
             <tr>
-                <td><?php echo $r['id_alumno'] ?></td>
-                <td><?php echo $r['nombre'] ?></td>
+                <td><?php echo $results['id_alumno'] ?></td>
+                <td><?php echo $results['nombre'] ?></td>
                
-                <td><?php echo $r['boleta'] ?></td>
-                <td><a href="view.php?id=<?php echo $r['id_alumno'] ?>" class="btn btn-primary">Ver</a></td>
-                <td><a href="edit.php?id=<?php echo $r['id_alumno'] ?>" class="btn btn-warning">Editar</a></td>
-                <td><a onclick="return confirm('¿Estas seguro de eliminar este ID?');" href="delete.php?id=<?php echo $r['id_alumno'] ?>" class="btn btn-danger">Eliminar</a></td>
+                <td><?php echo $results['boleta'] ?></td>
+                <td><a href="view.php?id=<?php echo $results['id_alumno'] ?>" class="btn btn-primary">Ver</a></td>
+                <td><a href="edit.php?id=<?php echo $results['id_alumno'] ?>" class="btn btn-warning">Editar</a></td>
+                <td><a onclick="return confirm('¿Estas seguro de eliminar este ID?');" href="delete.php?id=<?php echo $results['id_alumno'] ?>" class="btn btn-danger">Eliminar</a></td>
             </tr>
-            <?php }?>
+        
         </table>
 
 
@@ -40,4 +40,4 @@
 
 
 
-<?php require_once 'includes/footer.php'; ?>  
+<?php require_once 'footerMain.php'; ?>  

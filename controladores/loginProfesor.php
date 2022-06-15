@@ -1,8 +1,8 @@
 <?php
-    $title = 'Login Alumnos'; 
+    $title = 'Login Profesor'; 
 
-    require_once 'includes/header.php'; 
-    require_once 'db/conn.php'; 
+    require_once '../includes/headerClean.php'; 
+    require_once '../db/conn.php'; 
     
     
     //If data was submitted via a form POST request, then...
@@ -10,14 +10,15 @@
         $email = (trim($_POST['email']));
         $password = $_POST['password'];
         
+        $result = $user->getUserProfesor($email,$password);
 
-        $result = $user->getUser($email,$password);
         if(!$result){
             echo '<div class="alert alert-danger">Usuario o Contraseña Incorreto. Intenta de nuevo </div>';
         }else{
             $_SESSION['username'] = $email;
             $_SESSION['userid'] = $result['id'];
-            header("Location: viewrecords.php");
+            $_SESSION['name'] = $result['nombre'];
+            header("Location: ../views/mainProfesor.php");
         }
 
     }
@@ -44,4 +45,4 @@
 
     </form><br /><br /><br /><br />
 
-    <?php include_once 'includes/footer.php'?>
+    <?php include_once '../includes/footer.php'?>

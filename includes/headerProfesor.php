@@ -33,10 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="../views/mainTT.php">Trabajo Terminal</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../views/mainEquipo.php">Mi Equipo</a>
+                            <a class="nav-link" aria-current="page" href="../views/mainTT.php">Mis TT</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../views/editarCuenta.php?id=<?php echo $results['id_alumno'] ?>">Mi Cuenta</a>

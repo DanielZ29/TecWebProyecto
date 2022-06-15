@@ -1,5 +1,6 @@
 <?php
 
+
     class alumnos {
         //private database object
         private $db;
@@ -7,6 +8,8 @@
         function __construct($conn){
             $this->db = $conn;
         }
+
+        
 
 
         public function registrarRepresentante($nombre,$email,$telefono,$boleta,$password){
@@ -70,19 +73,19 @@
         }
         
 
-        public function editInfo($id_alumno,$nombre,$email,$telefono,$boleta,$representante,$password){
+        public function editInfo($nombre,$email,$telefono,$boleta,$password){
             try{
-                $sql = "UPDATE `alumno` SET `nombre`=:nombre,`email`=:email,`telefono`=:telefono,`boleta`=:boleta,`representante`=:representante,`password`=:password  WHERE TT_id = :id_alumno ";
+                $sql = "UPDATE `alumno` SET `nombre`=:nombre,`email`=:email,`telefono`=:telefono,`boleta`=:boleta,`password`=:password  WHERE email = :email ";
                 $stmt = $this->db->prepare($sql);
 
                 //llenamos con valores verdaderos
-                $stmt->bindparam(':id_alumno',$id_alumno);
+             
                 $stmt->bindparam(':nombre',$nombre);
                 $stmt->bindparam(':email',$email);
                 $stmt->bindparam(':telefono',$telefono);
                 $stmt->bindparam(':boleta',$boleta);
-                $stmt->bindparam(':representante',$representante);
                 $stmt->bindparam(':password',$password);
+                
 
                 //ejecutamos
                 $stmt->execute();
@@ -95,10 +98,31 @@
             
         }
 
-        public function getInfo(){
-            $sql = "SELECT * FROM `alumno`;";
-            $result = $this->db->query($sql);
+        public function getInfo($id_alumno){
+            $sql = "SELECT * FROM `alumno` WHERE email = :email_alumno;";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindparam(':email_alumno', $id_alumno);
+            $stmt->execute();
+            $result = $stmt->fetch();
             return $result;
+        }
+
+        public function getIntegrantes($id_tt){
+            try{
+
+                $sql = " SELECT * FROM `alumno` WHERE id_tt = :id_tt AND representante = 0;";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':id_tt',$id_tt);
+                $stmt->execute();
+                return $stmt;
+
+            }catch(PDOException $e){
+
+                echo $e -> getMessage();
+                return false;
+                
+            }
+            
         }
 
         public function deleteInfo($id_alumno){

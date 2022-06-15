@@ -1,5 +1,5 @@
 <?php
     if(!isset($_SESSION['username'])){
-        header("Location: loginAlumno.php");
+        header("Location: ../controladores/loginAlumno.php");
     }
 ?>
